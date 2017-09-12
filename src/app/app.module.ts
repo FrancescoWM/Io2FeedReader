@@ -7,24 +7,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { StoriesPage } from '../pages/stories/stories';
+import { StoryPage } from '../pages/story/story';
+import { FeedProvider } from '../providers/feed/feed'; 
+
+import { HttpModule } from '@angular/http'; // Si deve aggiungere questo per far funzionare il provider feed
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    StoriesPage,
+    StoryPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    StoriesPage,
+    StoryPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FeedProvider
   ]
 })
 export class AppModule {}
